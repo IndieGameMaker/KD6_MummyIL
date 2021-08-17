@@ -104,4 +104,26 @@ public class MummyAgent : Agent
         }
     }
 
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.tag == stageManager.hintColor.ToString())
+        {
+            SetReward(+1.0f);
+            EndEpisode();
+            StartCoroutine(RevertMaterial(goodMt));
+        }
+        else
+        {
+            if (coll.collider.CompareTag("WALL") || coll.gameObject.name == "Hint")
+            {
+                SetReward(-0.05f);
+            }
+            else
+            {
+                SetReward(-1.0f);
+                EndEpisode();
+                StartCoroutine(RevertMaterial(badMt));
+            }
+        }
+    }
 }
