@@ -15,13 +15,27 @@ public class MummyAgent : Agent
 
     private StageManager stageManager;
 
+    private Renderer floorRd;
+    private Material originMt;
+
+    public Material goodMt, badMt;
+
     public override void Initialize()
     {
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         stageManager = tr.parent.GetComponent<StageManager>();
+        floorRd = tr.parent.Find("Floor").GetComponent<Renderer>();
+        originMt = floorRd.material;
 
         MaxStep = 2000;
+    }
+
+    IEnumerator RevertMaterial(Material changedMt)
+    {
+        floorRd.material = changedMt;
+        yield return new WaitForSeconds(0.2f);
+        floorRd.material = originMt;
     }
 
     public override void OnEpisodeBegin()
