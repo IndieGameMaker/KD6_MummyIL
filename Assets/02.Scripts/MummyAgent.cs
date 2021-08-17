@@ -106,6 +106,8 @@ public class MummyAgent : Agent
 
     void OnCollisionEnter(Collision coll)
     {
+        if (coll.gameObject.name == "Floor") return;
+
         if (coll.collider.tag == stageManager.hintColor.ToString())
         {
             SetReward(+1.0f);
