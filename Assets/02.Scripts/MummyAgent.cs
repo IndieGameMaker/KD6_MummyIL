@@ -7,12 +7,26 @@ using Unity.MLAgents.Actuators;
 
 public class MummyAgent : Agent
 {
+    private Transform tr;
+    private Rigidbody rb;
+
+    public float moveSpeed = 1.5f;
+    public float turnSpeed = 200.0f;
+
+    private StageManager stageManager;
+
     public override void Initialize()
     {
+        tr = GetComponent<Transform>();
+        rb = GetComponent<Rigidbody>();
+        stageManager = tr.parent.GetComponent<StageManager>();
+
+        MaxStep = 50;
     }
 
     public override void OnEpisodeBegin()
     {
+        stageManager.InitStage();
     }
 
     public override void CollectObservations(VectorSensor sensor)
