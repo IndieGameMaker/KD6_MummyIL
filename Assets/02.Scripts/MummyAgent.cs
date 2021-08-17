@@ -27,6 +27,11 @@ public class MummyAgent : Agent
     public override void OnEpisodeBegin()
     {
         stageManager.InitStage();
+
+        rb.velocity = rb.angularVelocity = Vector3.zero;
+
+        tr.localPosition = new Vector3(0, 0.05f, -5.0f);
+        tr.localRotation = Quaternion.identity;
     }
 
     public override void CollectObservations(VectorSensor sensor)
