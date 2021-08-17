@@ -76,7 +76,7 @@ public class MummyAgent : Agent
         rb.AddForce(dir * moveSpeed, ForceMode.VelocityChange);
 
         // 마이너스 패널티
-        AddReward(-1 / (float)MaxStep); // 2000 -> 0.002 
+        SetReward(-1 / (float)MaxStep); // 2000 -> 0.002 
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
