@@ -685,6 +685,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c88dcd75384ced830cc436f812e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintColor: 0
+  hintMt:
+  - {fileID: 2100000, guid: 8e975e6346e3d4f8f9ba8025358a977a, type: 2}
+  - {fileID: 2100000, guid: 13c02b10b653e4c1fa2d6b344c928187, type: 2}
+  - {fileID: 2100000, guid: 542c9d6de7d6349cfa1289c2bb877a1d, type: 2}
+  - {fileID: 2100000, guid: d531028456ac0402986e48be1f9ba5ce, type: 2}
+  hintTag:
+  - HINT_BLACK
+  - HINT_RED
+  - HINT_GREEN
+  - HINT_BLUE
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

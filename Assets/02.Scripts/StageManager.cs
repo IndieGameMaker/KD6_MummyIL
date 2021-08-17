@@ -15,15 +15,33 @@ public class StageManager : MonoBehaviour
     public Material[] hintMt;
     public string[] hintTag;
 
-    // Start is called before the first frame update
+    // Hint Cube의 Renderer
+    private new Renderer renderer;
+
     void Start()
     {
-
+        renderer = transform.Find("Hint").GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
+    public void InitStage()
+    {
+        // 난수 발생
+        int idx = Random.Range(0, hintMt.Length); // 0, 1, 2, 3
+
+        // Hint 머티리얼 교체
+        renderer.material = hintMt[idx];
+        // Hint 태그를 지정
+        renderer.gameObject.tag = hintTag[idx];
+
+        // 목표 타겟의 색상
+        hintColor = (HINT_COLOR)idx;
+    }
+
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            InitStage();
+        }
     }
 }
