@@ -17,6 +17,8 @@ public class StageManager : MonoBehaviour
 
     // Hint Cube의 Renderer
     private new Renderer renderer;
+    // 이전 색상의 인덱스값을 저장할 변수
+    private int prevIdx = -1;
 
     void Start()
     {
@@ -26,7 +28,13 @@ public class StageManager : MonoBehaviour
     public void InitStage()
     {
         // 난수 발생
-        int idx = Random.Range(0, hintMt.Length); // 0, 1, 2, 3
+        int idx = 0;
+
+        do
+        {
+            idx = Random.Range(0, hintMt.Length); // 0, 1, 2, 3
+        } while (idx == prevIdx);
+        prevIdx = idx;
 
         // Hint 머티리얼 교체
         renderer.material = hintMt[idx];
